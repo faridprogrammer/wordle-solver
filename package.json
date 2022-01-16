@@ -1,0 +1,19 @@
+{
+  "name": "wordle-solver",
+  "version": "1.0.0",
+  "description": "A simple word enumerator",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js"
+  },
+  "author": "Farid Bekran",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/faridprogrammer/wordle-solver"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.8",
+    "readline-sync": "^1.4.10"
+  }
+}
