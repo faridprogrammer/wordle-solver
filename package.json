@@ -1,7 +1,7 @@
 {
-  "name": "wordle-solver",
-  "version": "1.0.0",
-  "description": "A simple word enumerator",
+  "name": "another-wordle-solver",
+  "version": "1.0.2",
+  "description": "A very simple word enumerator",
   "main": "dist/index.js",
   "scripts": {
     "start": "tsc && node dist/index.js"
