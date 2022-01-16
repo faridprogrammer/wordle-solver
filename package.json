@@ -1,8 +1,19 @@
 {
   "name": "another-wordle-solver",
-  "version": "1.0.2",
+  "version": "1.0.8",
   "description": "A very simple word enumerator",
   "main": "dist/index.js",
+  "bin": {
+    "another-wordle-solver": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "type": "module",
+  "keywords": [
+    "wordle",
+    "solver"
+  ],
   "scripts": {
     "start": "tsc && node dist/index.js"
   },
@@ -14,6 +25,7 @@
   },
   "dependencies": {
     "@types/node": "^17.0.8",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "word-list": "^3.1.0"
   }
 }

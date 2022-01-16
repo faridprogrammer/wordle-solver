@@ -1,6 +1,7 @@
 import readlineSync from 'readline-sync'
 import * as fs from 'fs';
 import * as os from 'os';
+import wordListPath from 'word-list'
 
 let result: string[] = [];
 
@@ -16,6 +17,7 @@ console.log("|               Simple word enumerator for WORDLE               |")
 console.log("|_______________________________________________________________|")
 console.log("");
 
+const wordArray = fs.readFileSync(wordListPath, 'utf8').split('\n');
 var letterCount = readlineSync.question('Enter word letter count - useful when there is no pattern: (default is 5)') || 5;
 let pattern = readlineSync.question('Enter known letters - leave empty for non (For example if last three letter are known in "HELLO" word. You can use the following pattern **LLO): ');
 let hasKnownCharacters = readlineSync.question('Is there any known characters which you do not know the exact places (yes/no - default is no)? ');
@@ -41,9 +43,10 @@ let resultItem = pattern;
 let start = async function () {
     await print(starCount);
     result = result.filter(item => {
+        if(wordArray.indexOf(item.toLowerCase()) == -1)
+            return false;
         let thisItemHasKnownChars = true;
         if (knownCharacterArray) {
-
             knownCharacterArray.forEach(knownChar => {
                 if (item.indexOf(knownChar) == -1) {
                     thisItemHasKnownChars = false;
