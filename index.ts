@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import readlineSync from 'readline-sync'
 import * as fs from 'fs';
 import * as os from 'os';
