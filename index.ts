@@ -38,6 +38,7 @@ if (!pattern)
     pattern = '*'.repeat(letterCount);
 
 console.log("Selected pattern is " + pattern);
+console.log("");
 var starCount = [...pattern].map(b => b == "*" ? 1 : 0).reduce((a, b) => a + b, 0);
 const starIndexes = [...pattern].map((b, index) => b == "*" ? index : -1).filter(item => item != -1);
 let resultItem = pattern;
@@ -45,12 +46,13 @@ let resultItem = pattern;
 let start = async function () {
     await print(starCount);
     result = result.filter(item => {
-        if(wordArray.indexOf(item.toLowerCase()) == -1)
+        if (wordArray.indexOf(item.toLowerCase()) == -1)
             return false;
         let thisItemHasKnownChars = true;
         if (knownCharacterArray) {
             knownCharacterArray.forEach(knownChar => {
                 if (item.indexOf(knownChar) == -1) {
+                    thisItemHasKnownChars = false;
                     thisItemHasKnownChars = false;
                 }
             });
@@ -63,18 +65,25 @@ let start = async function () {
         console.log("File saved successfully at " + filePath);
     }
     else {
-        for (let index = 0; index < result.length; index++) {
-            const element = result[index];
-            console.log(element);
-            console.log(" ");
+        if (result.length == 0) {
+            console.info("Sorry :( No words!")
+            console.log("");
+        }
+        else {
+            for (let index = 0; index < result.length; index++) {
+                const element = result[index];
+                console.log(element);
+                console.log(" ");
 
-            await new Promise(resolve => setTimeout(resolve, 100));
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
         }
     }
+    console.log("Done!");
 }
-console.log("Done!");
 
 start();
+
 
 async function print(level) {
     for (let index = 0; index < [...letters].length; index++) {
