@@ -12,11 +12,20 @@ Just run the following command.
 
 `npx another-wordle-solver`
 
+## Features
+
+- Wildcard pattern
+- Known characters with unknown position
+- Deleted characters
+- Save to file or print in console
+
+
 ## Application flow
 
 In this package there are some questions which will be asked in order to help proceed the flow. 
 
 ### 1
+
 `Enter word letter count - useful when there is no pattern: (default is 5)`
 
 Simply set the character count of your desired word. In case of classic wordle you can pass this question without answer. To do this simply press <kbd>Enter</kbd>.
@@ -33,7 +42,18 @@ If there is any letter that your know is present in your word but you do not awa
 `Enter characters comma seperated (like A, B, C):`
 
 If your answer to the previous question is `yes`, you need to enter letters in comma seperated fashion. This helps the algorithm to limit the possible words which will be shown to you. 
+
 ### 5
+`Is there any known characters which are deleted? (yes/no - default is no)?`
+
+If there is any deleted character in your game say `yes`.
+
+### 6
+`Enter characters that are deleted, comma seperated (like A, B, C):`
+
+Enter the deleted characters here.
+
+### 7
 `Write results to file in home directory? (yes/no - default is no)?`
 
 Say `yes` to this question if you want to save results in a text file. This should be useful when there are a lot of possible words. To say no to this question you can simply press <kbd>Enter</kbd>.

@@ -11,7 +11,7 @@ function replaceAt(str, index, ch) {
     return str.replace(/./g, (c, i) => i == index ? ch : c);
 }
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 console.log(" _______________________________________________________________")
 console.log("|                                                               |")
@@ -29,6 +29,20 @@ if ((<string>hasKnownCharacters).toLowerCase() == 'y' || (<string>hasKnownCharac
     let characters = readlineSync.question("Enter characters comma seperated (like A, B, C):");
     knownCharacterArray = (<string>characters).split(',').map(item => item.trim());
 }
+
+let hasDeletedCharacters = readlineSync.question('Is there any known characters which are deleted? (yes/no - default is no)? ');
+let deletedCharacterArray: string[];
+if ((<string>hasDeletedCharacters).toLowerCase() == 'y' || (<string>hasDeletedCharacters).toLowerCase() == 'yes' || (<string>hasDeletedCharacters).toLowerCase() == 'ye') {
+    let characters = readlineSync.question("Enter characters that are deleted, comma seperated (like A, B, C):");
+    deletedCharacterArray = (<string>characters).split(',').map(item => item.trim());
+    if (deletedCharacterArray.length != 0) {
+        deletedCharacterArray.forEach(character => {
+            letters = letters.replace(character, "");
+        });
+    }
+}
+
+
 let writeToFile = readlineSync.question('Write results to file in home directory? (yes/no - default is no)? ');
 if ((<string>writeToFile).toLowerCase() == 'y' || (<string>writeToFile).toLowerCase() == 'yes' || (<string>writeToFile).toLowerCase() == 'ye') {
     saveToFile = true;
